@@ -1,0 +1,43 @@
+type Query {
+  getDoctor(input: GetDoctorInput): Doctor
+  getDoctorList(input: GetDoctorListInput): [Doctor]
+}
+
+type Mutation {
+  bookmarkDoctor(input: GetDoctorInput): Doctor
+}
+
+# --------- #
+
+type Doctor {
+  uuid: ID!
+  name: String!
+  addresses: [Address]
+  priceFairness: PriceFairness
+}
+
+enum PriceFairness {
+  LOW
+  FAIR
+  HIGH
+}
+
+type Address {
+  street1: String
+  street2: String
+  zipCode: String!
+}
+
+# --------- #
+
+input GetDoctorInput {
+  " uuid of doctor "
+  uuid: ID!
+}
+
+input GetDoctorListInput {
+  " filter by the name of doctor "
+  name: String
+  " filter by the price fairness of the doctor "
+  priceFairness: PriceFairness
+}
