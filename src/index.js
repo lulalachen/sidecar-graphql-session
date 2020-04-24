@@ -1,7 +1,6 @@
 import { ApolloServer } from 'apollo-server'
 import path from 'path'
 import { fileLoader, mergeTypes, mergeResolvers } from 'merge-graphql-schemas'
-import { verify } from 'jsonwebtoken'
 
 import AuthAPI from './datasource/AuthAPI'
 import DoctorAPI from './datasource/DoctorAPI'
