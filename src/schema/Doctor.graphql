@@ -1,26 +1,15 @@
 type Query {
-  # getDoctor(input: GetDoctorInput): Doctor
   getDoctorList(input: GetDoctorListInput): GetDoctorListResponse
-}
-
-type Mutation {
-  # bookmarkDoctor(input: GetDoctorInput): BookmarkDoctorResponse
 }
 
 # --------- #
 
 type Doctor {
-  uuid: ID!
+  npi: ID!
   firstName: String!
   lastName: String!
   addresses(input: DoctorAddressFilterInput): [Address]
 }
-
-# enum PriceFairness {
-#   LOW
-#   FAIR
-#   HIGH
-# }
 
 type Address {
   street: String
@@ -51,10 +40,6 @@ input GetDoctorInput {
 }
 
 input GetDoctorListInput {
-  " filter by the name of doctor "
-  name: String
-  " filter by the price fairness of the doctor "
-  priceFairness: PriceFairness
   " Member uuid "
   memberUuid: String!
 }
