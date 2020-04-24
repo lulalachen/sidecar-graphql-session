@@ -1,0 +1,14 @@
+type Filter {
+  id: ID
+  category: String
+  type: String
+  field: String
+  op: String
+  api: String
+  vals: String
+  label: String
+}
+
+type Query {
+  getAccountSearchFilter: [Filter]
+}

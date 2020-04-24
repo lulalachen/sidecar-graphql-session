@@ -1,0 +1,813 @@
+type AdminCode {
+  brandName: String
+  careUuid: String
+  category: String
+  categorySlug: String
+  code: String
+  desc: String
+  dosage: String
+  genericName: String
+  id: String
+  modifier: String
+  option: String
+  sidecarCode: String
+  sidecarCodeDescription: String
+  specialities: String
+  strength: String
+  subcategory: String
+  subcategorySlug: String
+  type: String
+}
+
+type ApiResponse {
+  message: String
+}
+
+type CareCode {
+  averageUnitPrice: Float
+  brandName: String
+  code: String
+  desc: String
+  dosage: String
+  marketRate: Float
+  ndc: String
+  reimbursements: [Reimbursement!]
+  strength: String
+  title: String
+  type: String
+}
+
+input CareCodeInput {
+  averageUnitPrice: Float
+  brandName: String
+  code: String
+  desc: String
+  dosage: String
+  marketRate: Float
+  ndc: String
+  reimbursements: [ReimbursementInput!]
+  strength: String
+  title: String
+  type: String
+}
+
+type CareEpisodeDetailDTO {
+  addOnRate: Float
+  averageUnitPrice: Float
+  careEpisodeUuid: String
+  careUuid: String
+  categorySlug: String
+  componentType: String
+  description: String
+  dosage: String
+  facilityCost: Float
+  facilityCoveredAmount: Float
+  facilityPlanPays: Float
+  form: String
+  marketRate: Float
+  name: String
+  nonFacilityCost: Float
+  nonFacilityCoveredAmount: Float
+  nonFacilityPlanPays: Float
+  option: String
+  sidecarCode: String
+  subCategorySlug: String
+  units: Float
+  uuid: String
+  version: String
+}
+
+input CareEpisodeDetailDTOInput {
+  addOnRate: Float
+  averageUnitPrice: Float
+  careEpisodeUuid: String
+  careUuid: String
+  categorySlug: String
+  componentType: String
+  description: String
+  dosage: String
+  facilityCost: Float
+  facilityCoveredAmount: Float
+  facilityPlanPays: Float
+  form: String
+  marketRate: Float
+  name: String
+  nonFacilityCost: Float
+  nonFacilityCoveredAmount: Float
+  nonFacilityPlanPays: Float
+  option: String
+  sidecarCode: String
+  subCategorySlug: String
+  units: Float
+  uuid: String
+  version: String
+}
+
+type CareEpisodeDTO {
+  active: Boolean
+  activeCoverage: Boolean
+  ageGroups: [String!]
+  bodyParts: [String!]
+  category: String
+  categorySlug: String
+  code: String
+  components: JSON
+  coverageMsaFactor: Float
+  coverageRxAreaFactor: Float
+  description: String
+  episode: Boolean
+  equipmentFees: [CareEpisodeDetailDTO!]
+  facilityFees: [CareEpisodeDetailDTO!]
+  genders: [String!]
+  imagingFees: [CareEpisodeDetailDTO!]
+  labFees: [CareEpisodeDetailDTO!]
+  locations: [String!]
+  medicineFees: [CareEpisodeDetailDTO!]
+  name: String
+  order: Int
+  prescriptionFees: [CareEpisodeDetailDTO!]
+  providerFees: [CareEpisodeDetailDTO!]
+  providerMsaFactor: Float
+  providerRxFactor: Float
+  rates: JSON
+  receiveAt: [CareFilter!]
+  reimbursementPercentage: Float
+  searchTerms: [String!]
+  subCategory: String
+  subCategorySlug: String
+  tags: [String!]
+  transportationFees: [CareEpisodeDetailDTO!]
+  uuid: String
+}
+
+input CareEpisodeDTOInput {
+  active: Boolean
+  activeCoverage: Boolean
+  ageGroups: [String!]
+  bodyParts: [String!]
+  category: String
+  categorySlug: String
+  code: String
+  components: JSON
+  coverageMsaFactor: Float
+  coverageRxAreaFactor: Float
+  description: String
+  episode: Boolean
+  equipmentFees: [CareEpisodeDetailDTOInput!]
+  facilityFees: [CareEpisodeDetailDTOInput!]
+  genders: [String!]
+  imagingFees: [CareEpisodeDetailDTOInput!]
+  labFees: [CareEpisodeDetailDTOInput!]
+  locations: [String!]
+  medicineFees: [CareEpisodeDetailDTOInput!]
+  name: String
+  order: Int
+  prescriptionFees: [CareEpisodeDetailDTOInput!]
+  providerFees: [CareEpisodeDetailDTOInput!]
+  providerMsaFactor: Float
+  providerRxFactor: Float
+  rates: JSON
+  receiveAt: [CareFilterInput!]
+  reimbursementPercentage: Float
+  searchTerms: [String!]
+  subCategory: String
+  subCategorySlug: String
+  tags: [String!]
+  transportationFees: [CareEpisodeDetailDTOInput!]
+  uuid: String
+}
+
+type CareFilter {
+  label: String
+  queryMap: JSON
+  selected: Boolean
+  subLabel: String
+}
+
+input CareFilterInput {
+  label: String
+  queryMap: JSON
+  selected: Boolean
+  subLabel: String
+}
+
+type CareLocation {
+  label: String
+  uuid: String
+}
+
+type CareReimbursementInfo {
+  active: Boolean
+  addOnRate: Float
+  ageGroups: [String!]
+  apcCodes: [String!]
+  averageUnitPrice: Float
+  bodyParts: [String!]
+  brandName: String
+  careOption: String
+  category: String
+  categorySlug: String
+  code: String
+  codeType: String
+  coveredByCMS: Boolean
+  coveredBySidecar: Boolean
+  cptCodes: [String!]
+  cpts: [CptHcpcsSidecarInfo!]
+  customCodes: [String!]
+  description: String
+  dosage: String
+  drgCodes: [String!]
+  drgs: [CptHcpcsSidecarInfo!]
+  drugLowestPrice: Boolean
+  drugNameWithFormStrength: String
+  effectiveYear: String
+  episode: Boolean
+  genders: [String!]
+  genericName: String
+  hcpcs: [CptHcpcsSidecarInfo!]
+  hcpcsCodes: [String!]
+  id: String
+  insuranceFilings: [InsuranceFiling!]
+  linkedAPCCodes: [CareCode!]
+  locations: [String!]
+  marketRate: Float
+  modifier: String
+  order: Int
+  relatedMedicalCodes: [SidecarRelatedMedicalCode!]
+  relatedTo: [String!]
+  sidecarCode: String
+  sidecarFacilityRate: Float
+  sidecarNonFacilityRate: Float
+  specialties: String
+  strength: String
+  subCategory: String
+  subCategorySlug: String
+  tags: [String!]
+  title: String
+  uuid: String
+}
+
+input CareReimbursementInfoInput {
+  active: Boolean
+  addOnRate: Float
+  ageGroups: [String!]
+  apcCodes: [String!]
+  averageUnitPrice: Float
+  bodyParts: [String!]
+  brandName: String
+  careOption: String
+  category: String
+  categorySlug: String
+  code: String
+  codeType: String
+  coveredByCMS: Boolean
+  coveredBySidecar: Boolean
+  cptCodes: [String!]
+  cpts: [CptHcpcsSidecarInfoInput!]
+  customCodes: [String!]
+  description: String
+  dosage: String
+  drgCodes: [String!]
+  drgs: [CptHcpcsSidecarInfoInput!]
+  drugLowestPrice: Boolean
+  drugNameWithFormStrength: String
+  effectiveYear: String
+  episode: Boolean
+  genders: [String!]
+  genericName: String
+  hcpcs: [CptHcpcsSidecarInfoInput!]
+  hcpcsCodes: [String!]
+  id: String
+  insuranceFilings: [InsuranceFilingInput!]
+  linkedAPCCodes: [CareCodeInput!]
+  locations: [String!]
+  marketRate: Float
+  modifier: String
+  order: Int
+  relatedMedicalCodes: [SidecarRelatedMedicalCodeInput!]
+  relatedTo: [String!]
+  sidecarCode: String
+  sidecarFacilityRate: Float
+  sidecarNonFacilityRate: Float
+  specialties: String
+  strength: String
+  subCategory: String
+  subCategorySlug: String
+  tags: [String!]
+  title: String
+  uuid: String
+}
+
+type CareSearchFilter {
+  label: String
+  options: [CareSearchFilter!]
+  parentCategory: CareSearchFilter
+  value: String
+}
+
+type CareSearchFilterModel {
+  careType: [CareSearchFilter!]
+  locations: [CareLocation!]
+  members: [Member!]
+}
+
+type CareSearchPricing {
+  addOnRate: Float
+  memberShare: Float
+  msaFactor: Float
+  planShare: Float
+  shouldCost: Float
+  sidecarNonFacilityRate: Float
+  sidecarPercentage: Float
+}
+
+type CareSearchResult {
+  careEpisode: Boolean
+  category: String
+  categorySlug: String
+  code: String
+  codeType: String
+  episode: Boolean
+  episodeCode: String
+  order: Int
+  pricing: CareSearchPricing
+  sidecarCode: String
+  subCategory: String
+  subCategorySlug: String
+  title: String
+  uuid: String
+}
+
+type CptHcpcsSidecarInfo {
+  code: String
+  description: String
+  id: String
+  sidecarCode: String
+  type: String
+}
+
+input CptHcpcsSidecarInfoInput {
+  code: String
+  description: String
+  id: String
+  sidecarCode: String
+  type: String
+}
+
+type CustomPage_CareCode_ {
+  content: [CareCode!]
+  first: Boolean
+  last: Boolean
+  page: Int
+  size: Int
+  totalElements: String
+  totalPages: Int
+}
+
+type CustomPage_CareEpisodeDTO_ {
+  content: [CareEpisodeDTO!]
+  first: Boolean
+  last: Boolean
+  page: Int
+  size: Int
+  totalElements: String
+  totalPages: Int
+}
+
+type CustomPage_CareReimbursementInfo_ {
+  content: [CareReimbursementInfo!]
+  first: Boolean
+  last: Boolean
+  page: Int
+  size: Int
+  totalElements: String
+  totalPages: Int
+}
+
+type CustomPage_CareSearchResult_ {
+  content: [CareSearchResult!]
+  first: Boolean
+  last: Boolean
+  page: Int
+  size: Int
+  totalElements: String
+  totalPages: Int
+}
+
+type CustomPage_DrugDTO_ {
+  content: [DrugDTO!]
+  first: Boolean
+  last: Boolean
+  page: Int
+  size: Int
+  totalElements: String
+  totalPages: Int
+}
+
+type CustomPage_FacilityFee_ {
+  content: [FacilityFee!]
+  first: Boolean
+  last: Boolean
+  page: Int
+  size: Int
+  totalElements: String
+  totalPages: Int
+}
+
+type Doctor {
+  acceptingNewPatient: Boolean
+  addOnCostAfterSidecar: Float
+  addOnShouldCost: Float
+  addOnSidecarRate: Float
+  address: DoctorAddress
+  costAfterSidecar: Float
+  distance: Float
+  firstName: String
+  gender: String
+  image: String
+  lastName: String
+  middleName: String
+  npi: String
+  phone: String
+  priceFairness: String
+  providerRate: Float
+  ratings: DoctorRating
+  shouldCost: Float
+  sidecarRate: Float
+  specialties: [DoctorSpeciality!]
+  title: String
+  url: String
+  uuid: String
+}
+
+type DoctorAddress {
+  city: String
+  complete: Boolean
+  distance: String
+  lat: String
+  lon: String
+  slug: String
+  state: String
+  stateLong: String
+  street: String
+  street2: String
+  uuid: String
+  zip: String
+}
+
+type DoctorRating {
+  average: String
+  bedside: String
+  negotiate: String
+  overall: String
+  priceFairness: String
+  receipt: String
+  reviewCount: Int
+  waitTime: String
+}
+
+type DoctorSpeciality {
+  category: String
+  name: String
+  type: String
+  uuid: String
+}
+
+input DrugBookmarkApiInputBodyInput {
+  dosage: String
+  drugName: String
+  form: String
+  gsn: String
+  quantity: Float
+  zipCode: String
+}
+
+type DrugDTO {
+  averageUnitPrice: Float
+  brandName: String
+  dosage: String
+  marketRate: Float
+  name: String
+  ndc: String
+  strength: String
+  title: String
+}
+
+type FacilityFee {
+  admissionFor: String
+  facilityCode: String
+  facilityCodeSlug: String
+  facilitySlug: String
+  facilityType: String
+  procedureDescription: String
+  procedureOption: String
+  sidecarFacilityRate: Float
+  uuid: String
+}
+
+input FacilityFeeInput {
+  admissionFor: String
+  facilityCode: String
+  facilityCodeSlug: String
+  facilitySlug: String
+  facilityType: String
+  procedureDescription: String
+  procedureOption: String
+  sidecarFacilityRate: Float
+  uuid: String
+}
+
+type InsuranceFiling {
+  addOnRate: Float
+  averageUnitPrice: Float
+  facilityRate: Float
+  marketRate: Float
+  nonFacilityRate: Float
+  states: [String!]
+  status: String
+  title: String
+  uuid: String
+}
+
+input InsuranceFilingInput {
+  addOnRate: Float
+  averageUnitPrice: Float
+  facilityRate: Float
+  marketRate: Float
+  nonFacilityRate: Float
+  states: [String!]
+  status: String
+  title: String
+  uuid: String
+}
+
+scalar JSON
+
+type MarketRate {
+  averageUnitPrice: Float
+  brandName: String
+  careUuid: String
+  category: String
+  categorySlug: String
+  dosage: String
+  genericName: String
+  name: String
+  ndc: String
+  qty: Float
+  rate: Float
+  strength: String
+}
+
+type Member {
+  active: Boolean
+  firstName: String
+  gender: String
+  id: String
+  lastName: String
+  primary: Boolean
+  primaryMemberId: String
+  status: String
+  uuid: String
+}
+
+type Mutation {
+  """
+  <b>Calculates market price for home, in-patient, out-patient and ambulatory
+  services</b></br>Valid <code>locationCode</code> values<li>Home or Office:
+  <code>doctor</code></li><li>In-patient <code>drg</code></li><li>Out-patient:
+  <code>apc</code></li><li>Surgical Center: <code>asc</code></li></br>Doctor
+  Service:<b><code></br></br>{"code": "99203","doctorNpi":
+  "213422690","locationCode": "doctor","modifiers":
+  ["21","50"],"placeOfService": "11","units": 10,"zipCode":
+  "90807"}</code></br></br></b>Invalid Doctor Service:<b><code></br>{"code":
+  "Ramesh","doctorNpi": "213422690","locationCode": "doctor","modifiers":
+  ["21","50"],"placeOfService": "11","units": 10,"zipCode":
+  "90807"}</code></br></br></b>Invalid In-patient Service:<b><code></br>{"code":
+  "Ramesh","locationCode": "drg","zipCode":
+  "90807"}</code></br></br></b>In-patient Service:<b><code></br>{"code":
+  "0040","locationCode": "drg","zipCode":
+  "90807"}</code></br></br></b>In-patient Service:<b><code></br>{"code":
+  "40","locationCode": "drg","zipCode": "90807"}</code></br></br></b>Out-patient
+  Service:<b><code></br>{"code": "0856","locationCode": "apc","zipCode":
+  "90807","units":10}</code></br></br></b>Surgical Center
+  Service:<b><code></br>{"code": "11046","locationCode": "asc","zipCode":
+  "90807","units":10}</code></br></br></b>
+  """
+  calculateSidecarCostByCptHcpcsUsingPOST(token: String!, priceByCptHcpcsRequest: PriceByCptHcpcsRequestInput!): PriceByCptHcpcsResponse!
+  createCareReimbursementInfoUsingPOST(token: String!, careReimbursementInfo: CareReimbursementInfoInput!): CareReimbursementInfo!
+  updateCareReimbursementInfoUsingPUT(token: String!, uuid: String!, careReimbursementInfo: CareReimbursementInfoInput!): CareReimbursementInfo!
+  inActivateCareReimbursementInfoUsingDELETE(token: String!, uuid: String!): Boolean!
+  addSidecarRelatedMedicalCodeUsingPUT(token: String!, uuid: String!, sidecarRelatedMedicalCodes: [SidecarRelatedMedicalCodeInput!]!): [SidecarRelatedMedicalCode!]!
+  removeSidecarRelatedMedicalCodeUsingDELETE(token: String!, uuid: String!, sidecarRelatedMedicalCode: SidecarRelatedMedicalCodeInput!): Boolean!
+  findReimbursementInfoBySidecarCodeByPostUsingPOST(token: String!, sidecarCodeDTO: SidecarCodeDTOInput!, size: Int): CustomPage_CareReimbursementInfo_!
+  createCareEpisodeUsingPOST(token: String!, careEpisodeDTO: CareEpisodeDTOInput!): CareEpisodeDTO!
+  updateCareEpisodeUsingPUT(token: String!, careEpisodeDTO: CareEpisodeDTOInput!): CareEpisodeDTO!
+  removeCareFromEpisodeUsingDELETE(token: String!, uuid: String!, componentType: String!, careUuid: String!): CareEpisodeDTO!
+  addCareToEpisodeByComponentIdUsingPUT(token: String!, uuid: String!, componentType: String!, careUuid: String!, units: Float!): CareEpisodeDTO!
+  createFacilityFeeUsingPOST(token: String!, facilityFee: FacilityFeeInput!): FacilityFee!
+  updateFacilityFeeUsingPUT(token: String!, uuid: String!, facilityFee: FacilityFeeInput!): FacilityFee!
+
+  """loadCares"""
+  loadCareEpisodesToESUsingPUT(token: String!): ApiResponse!
+
+  """loadRelatedCares"""
+  loadRelatedCareCodesToSQLUsingPUT(token: String!): ApiResponse!
+
+  """reset cares ES"""
+  resetCareServiceUsingPUT(token: String!): ApiResponse!
+
+  """loadCares"""
+  loadCareServiceToESUsingPUT(token: String!): ApiResponse!
+
+  """loadCares"""
+  updateTitleInESUsingPUT(token: String!, title: String!): ApiResponse!
+
+  """drg"""
+  loadDRGCodesUsingPUT(token: String!): ApiResponse!
+
+  """load icd1 - cm"""
+  loadDiagnosisCodesUsingPUT(token: String!): ApiResponse!
+
+  """loadPrescriptionsIntoSearchEngine"""
+  loadPrescriptionsIntoSearchEngineUsingPUT(token: String!): ApiResponse!
+
+  """
+  <b>Adds a bookmark to drug's form, strength, pricing and available
+  locations</b>Sample Payload:</br><b><code></br>{</br>"dosage": "40
+  MG",</br>"drugName": "ATORVASTATIN CALCIUM",</br>"form": "Tablet",</br>"gsn":
+  "029969",</br>"quantity": 45,</br>"zipCode": "91377"</br>}</br>
+  """
+  bookmarkMyDrugUsingPUT(token: String!, drugBookmarkApiInputBody: DrugBookmarkApiInputBodyInput!): JSON!
+
+  """
+  <b>Removes a bookmark for the logged in member and bookmarkUuid</b></br>
+  """
+  removeDoctorBookmarkUsingDELETE(token: String!, bookmarkUuid: String!): Boolean!
+}
+
+input PriceByCptHcpcsRequestInput {
+  billType: String
+  code: String
+  codeType: String
+  doctorCategory: String
+  doctorNpi: String
+  locationCode: String
+  memberUuid: String
+  modifiers: [String!]
+  placeOfService: String
+  specialityUuid: String
+  units: Float
+  zipCode: String
+}
+
+type PriceByCptHcpcsResponse {
+  addOnRate: Float
+  addOnShouldCost: Float
+  careUuid: String
+  category: String
+  categorySlug: String
+  code: String
+  codeType: String
+  coverageAverageUnitPrice: Float
+  coverageMsaFactor: Float
+  coverageRxAreaFactor: Float
+  cptHcpcsCode: String
+  doctorCategory: String
+  drFacilityFee: Float
+  drNonFacilityFee: Float
+  label: String
+  memberUuid: String
+  modifiers: [String!]
+  msaFactor: Float
+  name: String
+  option: String
+  placeOfService: String
+  prescriptionsCovered: Boolean
+  providerAverageUnitPrice: Float
+  reimbursementPercentage: Float
+  rxFactor: Float
+  sidecarCode: String
+  sidecarCoveredAmount: Float
+  sidecarRate: Float
+  specialityCSV: String
+  specialityUuid: String
+  subCategorySlug: String
+  totalCoverageMarketRate: Float
+  totalProviderMarketRate: Float
+  unAdjustedMarketRate: Float
+  units: Float
+}
+
+type Query {
+  """<b>Note</b> Supported codeType=apc,asc,cpt,drg,hcpcs,custom"""
+  suggestCodeDetailsUsingGET(token: String!, code: String!): [AdminCode!]!
+
+  """${careController.search.note}"""
+  getCareDetailsUsingGET(token: String!, uuid: String!, careName: String, drugName: String, careType: String, careProcedureType: String, category: String, facilityFeeId: String, facilityCode: String, facilityTypeSlug: String, careVersion: String, displayedCareVersion: String, filterType: String, gsn: String, qty: String, location: String, zipCode: String!, memberUuid: String!, includeFAQ: Boolean, brandedOrGenericId: String, numOfPharmacies: Int, careClientServiceType: String, locationLat: String, locationLong: String, searchRadius: Float, form: String, drugDetailCustomized: String, strength: String, careEpisode: Boolean): JSON!
+
+  """
+  <b>Search Care Related Types</b></br>The following are the valid values for
+  <code>careType</code></br><li><b>drug</b></li></br>
+  """
+  getSearchFiltersUsingGET(token: String!, memberUuid: String!): CareSearchFilterModel!
+  calculateMarketRateUsingGET(token: String!, drugName: String!, strength: String!, form: String!, qty: Float!, effectiveYear: String!): MarketRate!
+  findReimbursementInfoByUuidUsingGET(token: String!, uuid: String!, page: Int, size: Int): JSON!
+  getPrescriptionByDNCUsingGET(token: String!, ndc: String!, qty: Float!): MarketRate!
+
+  """${careController.search.note}"""
+  getPublicCareDetailsUsingGET(uuid: String!, careName: String, drugName: String, careType: String, careProcedureType: String, category: String, facilityFeeId: String, facilityCode: String, facilityTypeSlug: String, careVersion: String, displayedCareVersion: String, filterType: String, gsn: String, qty: String, location: String, zipCode: String!, includeFAQ: Boolean, brandedOrGenericId: String, numOfPharmacies: Int, careClientServiceType: String, locationLat: String, locationLong: String, searchRadius: Float, drugDetailCustomized: String, form: String, strength: String, careEpisode: Boolean, token: String!): JSON!
+  getPublicSearchFiltersUsingGET(token: String!): CareSearchFilterModel!
+  searchPublicCareUsingGET(careTypes: [String!], memberUuid: String, gender: String, age: String, bodyPart: String, location: String, query: String, lat: String, lng: String, cptCode: String, hcpcsCode: String, drgCode: String, apcCode: String, ascCode: String, customCode: String, sidecarCode: String, episodeCode: String, zipCode: String, sidecarPercentage: Float, msaFactor: Float, page: Int, size: Int, token: String!): CustomPage_CareSearchResult_!
+  findReimbursementInfoBySidecarCodeUsingGET(token: String!, sidecarCodes: [String!], episodeCodes: [String!], query: String, page: Int, size: Int): CustomPage_CareReimbursementInfo_!
+  getRelatedCaresUsingGET(token: String!, uuid: String!, memberUuid: String!, location: String!, zipCode: String!): [RelatedCareDTO!]!
+  searchUsingGET(token: String!, careTypes: [String!], memberUuid: String, gender: String, age: String, bodyPart: String, location: String, query: String, lat: String, lng: String, cptCode: String, hcpcsCode: String, drgCode: String, apcCode: String, ascCode: String, customCode: String, sidecarCode: String, episodeCode: String, zipCode: String, sidecarPercentage: Float, msaFactor: Float, page: Int, size: Int): CustomPage_CareSearchResult_!
+  getDoctorPriceDetailsBySidecarCodeUsingGET(token: String!, sidecarCode: String!, memberUuid: String!, lat: String!, lon: String!, radius: String, sort: String, zipCode: String): [Doctor!]!
+  suggestReimbursementInfoUsingGET(token: String!, sidecarCodes: [String!], query: String, page: Int, size: Int): CustomPage_CareReimbursementInfo_!
+
+  """<b>Note</b> type: [cpt-hcpcs]"""
+  searchCptHcpcsUsingGET(token: String!, query: String, page: Int, size: Int): CustomPage_CareCode_!
+
+  """<b>Note</b> type: [drg]"""
+  searchDRGUsingGET(token: String!, query: String, page: Int, size: Int): CustomPage_CareCode_!
+  performAutoCompletePubUsingGET(drugNamePrefix: String!, page: Int, size: Int, uniqueTitle: Boolean, token: String!): CustomPage_DrugDTO_!
+  performAutoCompleteUsingGET(token: String!, drugNamePrefix: String!, page: Int, size: Int, uniqueTitle: Boolean): CustomPage_DrugDTO_!
+
+  """
+  <b>Returns drug instructions</b></br>Mandatory Path Parameter: <code>gsn<code></br>
+  """
+  getDrugFAQByGSNUsingGET(token: String!, gsn: String!): JSON!
+  getCareEpisodesUsingGET(token: String!, episodeCodes: [String!], query: String, page: Int, sortOrder: String): CustomPage_CareEpisodeDTO_!
+  getCareEpisodeByUuidUsingGET(token: String!, uuid: String!): JSON!
+  getAllFacilityFeeUsingGET(token: String!, query: String, uuid: String, page: Int, size: Int): CustomPage_FacilityFee_!
+
+  """<b>Note</b> type: [procedure,diagnose]"""
+  searchICDSCodesUsingGET(token: String!, query: String, type: String!, page: Int, size: Int): CustomPage_CareCode_!
+  searchCodesPaginatedUsingGET(token: String!, code: String!, page: Int, size: Int): CustomPage_CareCode_!
+
+  """
+  <b>Note</b> Supported codeType=apc,asc,cpt,drg,hcpcs,ndc,sidecarCode,custom,correction
+  """
+  suggestCodeDetailsPaginatedUsingGET(token: String!, code: String!, codeTypes: [String!], paginated: [String!], page: Int, size: Int): CustomPage_CareCode_!
+  searchCodesUsingGET(token: String!, code: String!): [CareCode!]!
+
+  """
+  <b>Note</b> Supported codeType=apc,asc,cpt,drg,hcpcs,ndc,sidecarCode,custom,correction
+  """
+  suggestCodeDetailsUsingGET_1(token: String!, code: String!, codeTypes: [String!]): [CareCode!]!
+}
+
+type Reimbursement {
+  careOption: String
+  category: String
+  categorySlug: String
+  modifier: String
+  sidecarCode: String
+  title: String
+}
+
+input ReimbursementInput {
+  careOption: String
+  category: String
+  categorySlug: String
+  modifier: String
+  sidecarCode: String
+  title: String
+}
+
+type RelatedCareDTO {
+  category: String
+  categorySlug: String
+  form: String
+  marketRate: Float
+  modifier: String
+  option: String
+  sidecarCode: String
+  sidecarPays: Float
+  strength: String
+  subcategory: String
+  subcategorySlug: String
+  title: String
+  uuid: String
+  version: String
+}
+
+input SidecarCodeDTOInput {
+  sidecarCodes: [String!]
+}
+
+type SidecarRelatedMedicalCode {
+  code: String
+  description: String
+  id: String
+  sidecarCode: String
+  type: String
+}
+
+input SidecarRelatedMedicalCodeInput {
+  code: String
+  description: String
+  id: String
+  sidecarCode: String
+  type: String
+}
+

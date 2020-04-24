@@ -1,0 +1,16 @@
+enum LoginType {
+  password
+  fingerprint
+  admin
+}
+
+type LoginResponse {
+  token: String
+  firstName: String
+  lastName: String
+  primary: Boolean
+}
+
+type Mutation {
+  login(type: LoginType!, email: String, password: String): LoginResponse
+}

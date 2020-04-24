@@ -1,0 +1,15 @@
+type Answer {
+  uuid: ID!
+  text: String
+  permanent: Boolean
+}
+
+type HealthQuestion {
+  uuid: ID!
+  text: String
+  answer: [Answer]
+}
+
+type Query {
+  getHealthQuestions(stateCode: String, memberUuid: String): [HealthQuestion]
+}

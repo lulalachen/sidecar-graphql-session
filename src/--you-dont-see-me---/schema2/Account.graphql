@@ -1,0 +1,83 @@
+type TrafficSource {
+  campaign: String
+  keyword: String
+  medium: String
+  source: String
+}
+
+type Profit {
+  expectedReimbursed: Float
+  mediaCost: Float
+  owedExpenses: Float
+  paidExpenses: Float
+  reimbursed: Float
+}
+
+type CoverageSuggest {
+  input: [String]
+  weight: Float
+}
+
+type Account {
+  id: ID
+  uuid: String
+  accountType: String
+  coverage: Coverage
+  coverages: [Coverage]
+
+  status: String
+
+  startDate: Date
+  endDate: Date
+  paidUntilDate: Date
+  createdAt: Date
+  createdBy: ID
+  updatedAt: Date
+  updatedBy: ID
+  bookmarked: Boolean
+
+  state: String
+  zipCode: String
+  familySize: Int
+  members: [Member]
+  primaryMember: Member
+  coverageSuggest: CoverageSuggest
+
+  fullCoverageThreshold: Float
+  deductible: Float
+  discountAmount: Float
+  memberPercentage: Float
+  maxAnnualAllowance: Float
+  maternityCareCovered: String
+  threeYearRateLock: Boolean
+  prescriptionsCovered: Boolean
+  allowanceOverageCovered: Boolean
+  sidecarPercentage: Float
+
+  monthlyCost: Float
+
+  bank: String
+  initalPaymentGatewayId: String
+  initialPaymentType: String
+  initialPaymentTypeBrand: String
+  initialPaymentTypeLast4: String
+
+  packageId: ID
+  rateQuoteId: String
+  summaryFileKey: String
+  summaryFileName: String
+
+  profit: Profit
+  traffic: TrafficSource
+}
+
+type Query {
+  getAccount(accountUuid: String): Account
+  allAccounts(
+    search: String
+    page: Int
+    size: Int
+    sort: String
+    sortOrder: String
+  ): [Account]
+}

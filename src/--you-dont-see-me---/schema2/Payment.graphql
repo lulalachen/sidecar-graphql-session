@@ -1,0 +1,14 @@
+enum PaymentSchedule {
+  MONTHLY
+  QUATARLY
+  SEMIYEARLY
+  YEARLY
+}
+
+type Payment {
+  uuid: ID!
+  cost: Float
+  paymentSchedule: PaymentSchedule
+  discountAmount: Float
+  discountPercentage: Float
+}

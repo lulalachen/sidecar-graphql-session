@@ -1,0 +1,3 @@
+scalar Timestamp
+scalar Date
+scalar JSONType
