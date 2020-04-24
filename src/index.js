@@ -3,21 +3,26 @@ import path from 'path'
 import { fileLoader, mergeTypes, mergeResolvers } from 'merge-graphql-schemas'
 import { verify } from 'jsonwebtoken'
 
+import AuthAPI from './datasource/AuthAPI'
+import DoctorAPI from './datasource/DoctorAPI'
 import createDB from './context/db'
 
 const db = createDB()
 
 const typeDefs = mergeTypes(fileLoader(path.join(__dirname, './schema')))
 const resolvers = mergeResolvers(fileLoader(path.join(__dirname, './resolver')))
+const dataSources = () => ({
+  AuthAPI: new AuthAPI(),
+  DoctorAPI: new DoctorAPI(),
+})
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  dataSources,
   context: async ({ req }) => {
     try {
-      const { uuid } = verify(req.headers.token, 'FLUFFY_CAT')
-      const user = await db.users.findOne({ where: { uuid } })
-      return { db, user }
+      return { db, token: req.headers.token }
     } catch (error) {
       return { db }
     }

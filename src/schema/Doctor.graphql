@@ -1,36 +1,46 @@
 type Query {
-  getDoctor(input: GetDoctorInput): Doctor
-  getDoctorList(input: GetDoctorListInput): [Doctor]
+  # getDoctor(input: GetDoctorInput): Doctor
+  getDoctorList(input: GetDoctorListInput): GetDoctorListResponse
 }
 
 type Mutation {
-  bookmarkDoctor(input: GetDoctorInput): BookmarkDoctorResponse
+  # bookmarkDoctor(input: GetDoctorInput): BookmarkDoctorResponse
 }
 
 # --------- #
 
 type Doctor {
   uuid: ID!
-  name: String!
-  addresses: [Address]
-  priceFairness: PriceFairness
+  firstName: String!
+  lastName: String!
+  addresses(input: DoctorAddressFilterInput): [Address]
 }
 
-enum PriceFairness {
-  LOW
-  FAIR
-  HIGH
-}
+# enum PriceFairness {
+#   LOW
+#   FAIR
+#   HIGH
+# }
 
 type Address {
-  street1: String
-  street2: String
-  zipCode: String!
+  street: String
+  city: String
+  state: String
+  zip: String!
+  lat: Float
+  lon: Float
+  primary: Boolean
 }
 
 type BookmarkDoctorResponse {
   isBookmarked: Boolean
   doctor: Doctor
+}
+
+type GetDoctorListResponse {
+  page: Int
+  size: Int
+  content: [Doctor]
 }
 
 # --------- #
@@ -45,4 +55,10 @@ input GetDoctorListInput {
   name: String
   " filter by the price fairness of the doctor "
   priceFairness: PriceFairness
+  " Member uuid "
+  memberUuid: String!
+}
+
+input DoctorAddressFilterInput {
+  isPrimary: Boolean
 }

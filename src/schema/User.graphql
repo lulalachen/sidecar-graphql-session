@@ -1,9 +1,7 @@
 type Query {
-  getBookmarks: [Doctor]
 }
 
 type Mutation {
-  signup(input: UserMutationInput): UserCredential
   login(input: UserMutationInput): UserCredential
 }
 
@@ -11,6 +9,9 @@ type User {
   uuid: ID!
   email: String!
   password: String!
+  aud: String
+  sub: String
+  cud: String
   bookmarks: [Doctor]
 }
 
@@ -18,6 +19,9 @@ type UserCredential {
   "User uuid"
   uuid: ID!
   token: String!
+  aud: String
+  sub: String
+  cud: String
 }
 
 input UserMutationInput {
