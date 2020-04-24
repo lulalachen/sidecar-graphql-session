@@ -1,4 +1,0 @@
-type Error {
-  message: String
-  errors: [String]
-}

@@ -1,5 +1,0 @@
-type Prescription {
-  uuid: ID!
-  name: String
-  drg: String
-}
