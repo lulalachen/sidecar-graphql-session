@@ -4,7 +4,7 @@ type Query {
 }
 
 type Mutation {
-  bookmarkDoctor(input: GetDoctorInput): Doctor
+  bookmarkDoctor(input: GetDoctorInput): BookmarkDoctorResponse
 }
 
 # --------- #
@@ -26,6 +26,11 @@ type Address {
   street1: String
   street2: String
   zipCode: String!
+}
+
+type BookmarkDoctorResponse {
+  isBookmarked: Boolean
+  doctor: Doctor
 }
 
 # --------- #

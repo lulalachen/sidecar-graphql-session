@@ -1,0 +1,26 @@
+type Query {
+  getBookmarks: [Doctor]
+}
+
+type Mutation {
+  signup(input: UserMutationInput): UserCredential
+  login(input: UserMutationInput): UserCredential
+}
+
+type User {
+  uuid: ID!
+  email: String!
+  password: String!
+  bookmarks: [Doctor]
+}
+
+type UserCredential {
+  "User uuid"
+  uuid: ID!
+  token: String!
+}
+
+input UserMutationInput {
+  email: String!
+  password: String!
+}
